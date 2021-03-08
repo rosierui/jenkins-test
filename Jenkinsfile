@@ -6,6 +6,7 @@ pipeline {
                 sh 'whoami'
                 sh 'echo $USER'
                 sh 'chmod +x ./flakey-deploy.sh'
+                sh 'chmod +x ./health-check.sh'
                 retry(3) {
                     sh './flakey-deploy.sh'
                 }
