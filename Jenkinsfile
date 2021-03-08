@@ -3,6 +3,9 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
+                sh 'whoami'
+                sh 'echo $USER'
+
                 retry(3) {
                     sh './flakey-deploy.sh'
                 }
