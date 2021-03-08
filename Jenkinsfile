@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh 'whoami'
                 sh 'echo $USER'
-
+                sh 'chmod +x ./flakey-deploy.sh'
                 retry(3) {
                     sh './flakey-deploy.sh'
                 }
