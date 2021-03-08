@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('mw_build') {
             steps {
-                sh 'echo "Build"'
+                sh 'echo "mw_build finished"'
             }
         }
         stage('deploy') {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('custom_stage_name') {
             steps {
-                sh 'echo "Fail!"; exit 1'
+                sh 'echo "test passed!"; exit 0'
             }
         }
     }
