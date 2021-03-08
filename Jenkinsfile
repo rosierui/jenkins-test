@@ -8,7 +8,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'echo "deploy"'
+                sh 'echo "deploy"; exit 0'
             }
         }
         stage('custom_stage_name') {
@@ -30,7 +30,7 @@ pipeline {
         unstable {
             echo 'This will run only if the run was marked as unstable'
         }
-        changed {
+        changed {  // executed before success or failure block
             echo 'This will run only if the state of the Pipeline has changed'
             echo 'For example, if the Pipeline was previously failing but is now successful'
         }
