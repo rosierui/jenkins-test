@@ -1,7 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Build') {
+            steps {
+                sh 'echo "Build"'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'echo "deploy"'
+            }
+        }
+        stage('custom_stage_name') {
             steps {
                 sh 'echo "Fail!"; exit 1'
             }
