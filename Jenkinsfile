@@ -1,21 +1,9 @@
 pipeline {
-    agent {
-        label '!windows'
-    }
-
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-	LD_LIBRARY_PATH = '/opt/openssl/1.0.2u/lib'
-    }
-
+    agent { docker 'maven:3.8.1-adoptopenjdk-11' } 
     stages {
-        stage('Build') {
+        stage('Example Build') {
             steps {
-                echo "Database engine is ${DB_ENGINE}"
-                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
-                echo "LD_LIBRARY_PATH is ${LD_LIBRARY_PATH}"
-                sh 'printenv'
+                sh 'mvn -B clean verify'
             }
         }
     }
