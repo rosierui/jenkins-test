@@ -8,10 +8,19 @@ pipeline {
         }
         stage('Example Deploy') {
             when {
-                branch 'master'
+                branch 'production'
+                environment name: 'DEPLOY_TO', value: 'production'
             }
             steps {
                 echo 'Deploying'
+            }
+	    // added additional condition
+            when {
+                branch 'master'
+                environment name: 'DEPLOY_TO', value: 'master'
+            }
+            steps {
+                echo 'Deploying from master branch'
             }
         }
     }
