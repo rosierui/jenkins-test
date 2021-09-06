@@ -1,0 +1,52 @@
+matrix {
+    axes {
+        axis {
+            name 'PLATFORM'
+            values 'linux', 'mac', 'windows'
+        }
+        axis {
+            name 'BROWSER'
+            values 'chrome', 'edge', 'firefox', 'safari'
+        }
+        axis {
+            name 'ARCHITECTURE'
+            values '32-bit', '64-bit'
+        }
+    }
+    excludes {
+        exclude {
+            // 4 cells
+            axis {
+                name 'PLATFORM'
+                values 'mac'
+            }
+            axis {
+                name 'ARCHITECTURE'
+                values '32-bit'
+            }
+        }
+        exclude {
+            // 2 cells
+            axis {
+                name 'PLATFORM'
+                values 'linux'
+            }
+            axis {
+                name 'BROWSER'
+                values 'safari'
+            }
+        }
+        exclude {
+            // 3 more cells and '32-bit, mac' (already excluded)
+            axis {
+                name 'PLATFORM'
+                notValues 'windows'
+            }
+            axis {
+                name 'BROWSER'
+                values 'edge'
+            }
+        }
+    }
+    // ...
+}
