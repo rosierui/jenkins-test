@@ -1,9 +1,5 @@
 pipeline {
-    agent any
-    environment {
-        DISABLE_AUTH = 'true'
-        DEPLOY_TO    = 'staging'
-    }
+    agent none
     stages {
         stage('Example Build') {
             steps {
@@ -11,12 +7,12 @@ pipeline {
             }
         }
         stage('Example Deploy') {
+            agent {
+                label "some-label"
+            }
             when {
-                branch 'master'
-                anyOf {
-                    environment name: 'DEPLOY_TO', value: 'production'
-                    environment name: 'DEPLOY_TO', value: 'staging'
-                }
+                beforeAgent true
+                branch 'production'
             }
             steps {
                 echo 'Deploying'
