@@ -14,14 +14,6 @@ pipeline {
             steps {
                 echo 'Deploying'
             }
-	    // added additional condition
-            when {
-                branch 'master'
-                environment name: 'DEPLOY_TO', value: 'master'
-            }
-            steps {
-                echo 'Deploying from master branch'
-            }
         }
     }
 }
