@@ -12,7 +12,7 @@ pipeline {
             }
             when {
                 beforeAgent true
-                branch 'production'
+                branch 'master' // branch 'production'
             }
             steps {
                 echo 'Deploying'
