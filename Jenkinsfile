@@ -1,3 +1,5 @@
+// beforeInput true takes precedence over beforeAgent true.
+
 pipeline {
     agent none
     stages {
@@ -7,12 +9,13 @@ pipeline {
             }
         }
         stage('Example Deploy') {
-            agent {
-                label "some-label"
-            }
             when {
-                beforeAgent true
-                branch 'master' // branch 'production'
+                beforeInput true
+                branch 'production'
+            }
+            input {
+                message "Deploy to production?"
+                id "simple-input"
             }
             steps {
                 echo 'Deploying'
